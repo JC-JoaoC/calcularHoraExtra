@@ -25,7 +25,7 @@ function showTab(tabId) {
 // Cálculo Vale Refeição
 function calcVR() {
     const dias = document.getElementById('dias-vr').value || 0;
-    const total = dias * 17.65;
+    const total = dias * 17.12;
     document.getElementById('res-vr').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
@@ -33,7 +33,7 @@ function calcVR() {
 function calcHE() {
     const h50 = document.getElementById('qtd-50').value || 0;
     const h80 = document.getElementById('qtd-80').value || 0;
-    const total = (h50 * 16.75) + (h80 * 20.10);
+    const total = (h50 * 16.76) + (h80 * 20.11);
     document.getElementById('res-he').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
