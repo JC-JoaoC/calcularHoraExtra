@@ -33,10 +33,15 @@ function calcVR() {
 function calcHE() {
     const h50 = document.getElementById('qtd-50').value || 0;
     const h80 = document.getElementById('qtd-80').value || 0;
-    const total = (h50 * 16.76) + (h80 * 20.11);
-    document.getElementById('res-he').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
+    const totalHE = (h50 * 16.76) + (h80 * 20.11);
+    const dsr = totalHE * 0.25;
+    const totalGeral = totalHE + dsr;
 
+    // Atualiza os valores na tela
+    document.getElementById('res-he').innerText = totalHE.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    document.getElementById('res-dsr').innerText = dsr.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    document.getElementById('res-total-geral').innerText = totalGeral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
 // Inicialização
 setInterval(updateDateTime, 1000);
 updateDateTime();

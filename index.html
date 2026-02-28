@@ -1,63 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de Horas extras</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="modal-overlay">
-        <div class="modal">
-            <h3>Aviso Importante</h3>
-            <p>Este sistema está em <strong>fase de testes e aprimoramento</strong>. Os cálculos e informações podem não estar 100% precisos no momento.</p>
-            <button onclick="closeModal()">Entendi e Concordo</button>
-            <button onclick="window.location.href='./nexti.html'">Abrir o Nexti</button>
-        </div>
-
+      <div class="modal">
+        <h3>Aviso Importante</h3>
+        <p>
+          Este sistema está em <strong>fase de testes e aprimoramento</strong>.
+          Os cálculos e informações podem não estar 100% precisos no momento.
+        </p>
+        <button onclick="closeModal()">Entendi e Concordo</button>
+        <button onclick="window.location.href = './nexti.html'">
+          Abrir o Nexti
+        </button>
+      </div>
     </div>
-<div class="main-container"></div>
+    <div class="main-container"></div>
     <header>
-        <h1>Calculadora de Horas extras</h1>
-        <div id="live-info">Carregando informações...</div>
+      <h1>Calculadora de Horas extras</h1>
+      <div id="live-info">Carregando informações...</div>
     </header>
 
     <nav class="tabs">
-        <button class="tab-btn active" onclick="showTab('vr')">Vale Refeição</button>
-        <button class="tab-btn" onclick="showTab('he')">Horas Extras</button>
+      <button class="tab-btn active" onclick="showTab('vr')">
+        Vale Refeição
+      </button>
+      <button class="tab-btn" onclick="showTab('he')">Horas Extras</button>
     </nav>
 
     <main class="content">
-        <div id="vr" class="calc-card active">
-            <h3 class="title-h3">Calcule o Vale Refeição</h3>
-            <div class="input-group">
-                <label>Quantidade de dias feito horas extras: (R$ 17,12)</label>
-                <input type="number" id="dias-vr" placeholder="Ex: 10 dias" oninput="calcVR()">
-            </div>
-            <div class="result-box">
-                Total a receber: <br>
-                <span class="result-val" id="res-vr">R$ 0,00</span>
-            </div>
+      <div id="vr" class="calc-card active">
+        <h3 class="title-h3">Calcule o Vale Refeição</h3>
+        <div class="input-group">
+          <label>Quantidade de dias feito horas extras: (R$ 17,12)</label>
+          <input
+            type="number"
+            id="dias-vr"
+            placeholder="Ex: 10 dias"
+            oninput="calcVR()"
+          />
         </div>
+        <div class="result-box">
+          Total a receber: <br />
+          <span class="result-val" id="res-vr">R$ 0,00</span>
+        </div>
+      </div>
 
-        <div id="he" class="calc-card">
-            <h3 class="title-h3">Calcule suas Horas Extras</h3>
-            <div class="input-group">
-              <p><small>Horas feitas na <strong>semana</strong></small></p>
-                <label>Horas 50% (R$ 16,76):</label>
-                <input type="number" id="qtd-50" placeholder="Ex: 10 horas" oninput="calcHE()">
-            </div>
-            <div class="input-group">
-              <p><small>Horas feitas na <strong>domingo/feriado</strong></small></p>
-                <label>Horas 80% (R$ 20,11):</label>
-                <input type="number" id="qtd-80" placeholder="Ex: 8 horas" oninput="calcHE()">
-            </div>
-            <div class="result-box">
-                Total de Horas Extras: <br>
-                <span class="result-val" id="res-he">R$ 0,00</span>         
-            </div>
+      <div id="he" class="calc-card">
+        <h3 class="title-h3">Calcule suas Horas Extras</h3>
+        <div class="input-group">
+          <p>
+            <small>Horas feitas na <strong>semana</strong></small>
+          </p>
+          <label>Horas 50% (R$ 16,76):</label>
+          <input
+            type="number"
+            id="qtd-50"
+            placeholder="Ex: 10 horas"
+            oninput="calcHE()"
+          />
         </div>
+        <div class="input-group">
+          <p>
+            <small>Horas feitas na <strong>domingo/feriado</strong></small>
+          </p>
+          <label>Horas 80% (R$ 20,11):</label>
+          <input
+            type="number"
+            id="qtd-80"
+            placeholder="Ex: 8 horas"
+            oninput="calcHE()"
+          />
+        </div>
+        <div class="result-box">
+          Total de Horas Extras: <br />
+          <span class="result-val-extra" id="res-he">R$ 0,00</span> <br /><br />
+
+          DSR sobre Horas Extras (25%): <br />
+          <span
+            class="result-val-extra"
+            id="res-dsr">R$ 0,00</span
+          >
+          <br /><br />
+
+          <strong>Total a Receber (HE + DSR):</strong> <br />
+          <span class="result-val" id="res-total-geral">R$ 0,00</span>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -65,5 +99,5 @@
     </footer>
 
     <script src="script.js"></script>
-</body>
-</html
+  </body>
+</html>
