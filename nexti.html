@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrindo Nexti...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Abrindo o aplicativo Nexti</h2>
+    <div class="loader"></div>
+    <p>Se você não for redirecionado em instantes, clique no botão abaixo:</p>
+    <button onclick="openApp()">Abrir Aplicativo</button>
+</div>
+
+<script>
+    const androidIntent = "intent://#Intent;scheme=nexti;package=com.nexti.mobile;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.nexti.mobile;end";
+    const iosAppStore = "https://apps.apple.com/br/app/nexti/id1242457098";
+    const iosCustomScheme = "nexti://";
+
+    function openApp() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Android
+        if (/android/i.test(userAgent)) {
+            window.location.href = androidIntent;
+        } 
+        // iOS (iPhone, iPad, iPod)
+        else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            // Tenta abrir pelo scheme
+            window.location.href = iosCustomScheme;
+            
+            // Se não abrir em 2 segundos, vai para a App Store
+            setTimeout(function() {
+                window.location.href = iosAppStore;
+            }, 2000);
+        } 
+        // Desktop ou outros
+        else {
+            window.location.href = "https://www.nexti.com.br/";
+        }
+    }
+
+    // Executa automaticamente ao carregar a página
+    window.onload = openApp;
+</script>
+
+</body>
+</html>

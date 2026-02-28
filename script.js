@@ -1,0 +1,42 @@
+// Fechar o Modal inicial
+function closeModal() {
+    document.getElementById('modal-overlay').style.display = 'none';
+}
+
+// Relógio e Data em tempo real
+function updateDateTime() {
+    const now = new Date();
+    const data = now.toLocaleDateString('pt-BR');
+    const hora = now.toLocaleTimeString('pt-BR', { hour12: false });
+    
+    document.getElementById('live-info').innerHTML = 
+        `📅 ${data} - ⏰ ${hora} - 🌎 Guarulhos - SP `;
+}
+
+// Alternar entre abas (VR / HE)
+function showTab(tabId) {
+    document.querySelectorAll('.calc-card').forEach(card => card.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+}
+
+// Cálculo Vale Refeição
+function calcVR() {
+    const dias = document.getElementById('dias-vr').value || 0;
+    const total = dias * 17.65;
+    document.getElementById('res-vr').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+// Cálculo Horas Extras
+function calcHE() {
+    const h50 = document.getElementById('qtd-50').value || 0;
+    const h80 = document.getElementById('qtd-80').value || 0;
+    const total = (h50 * 16.75) + (h80 * 20.10);
+    document.getElementById('res-he').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+// Inicialização
+setInterval(updateDateTime, 1000);
+updateDateTime();
